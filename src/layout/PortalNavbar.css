@@ -1,0 +1,52 @@
+.portal-navbar {
+  width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);background: linear-gradient(
+    270deg,
+   BLUE,
+    #1e5dbb,
+   #DB2777,
+    #1e3a5f
+  );
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease infinite;
+  color: white;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.portal-logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.logout-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}

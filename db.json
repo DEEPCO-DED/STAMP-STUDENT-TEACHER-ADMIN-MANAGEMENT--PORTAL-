@@ -1,0 +1,39 @@
+{
+  "classLogs": [
+    {
+      "id": 1,
+      "date": "2025-11-16",
+      "subject": "PFS",
+      "topic": "YES",
+      "remarks": "Initial class"
+    },
+    {
+      "id": 2,
+      "date": "2025-11-17",
+      "subject": "DS",
+      "topic": "YES",
+      "remarks": "Introduction"
+    }
+  ],
+  "attendance": [],
+  "demoRequests": [
+    {
+      "id": "69ca",
+      "name": "deepak p",
+      "email": "dpkome@gmail.com",
+      "organization": "AMITY",
+      "date": "2025-12-18",
+      "status": "Pending",
+      "createdAt": "2025-12-18T20:08:44.510Z"
+    },
+    {
+      "id": "8776",
+      "name": "deepak p",
+      "email": "dpkome@gmail.com",
+      "organization": "AAAA",
+      "date": "2025-12-18",
+      "status": "Pending",
+      "createdAt": "2025-12-18T20:15:06.452Z"
+    }
+  ]
+}

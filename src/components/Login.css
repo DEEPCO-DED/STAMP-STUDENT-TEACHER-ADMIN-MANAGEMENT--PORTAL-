@@ -1,0 +1,42 @@
+
+
+
+.login-container {
+  height: calc(100vh - 70px); /* navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8fafc;
+}
+
+/* Card feel */
+.login-container h1 {
+  margin-bottom: 20px;
+  color: #1e3a5f;
+}
+
+.login-input {
+  width: 320px;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.login-button {
+  width: 320px;
+  padding: 12px;
+  background-color: #1e5dbb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #174a94;
+}

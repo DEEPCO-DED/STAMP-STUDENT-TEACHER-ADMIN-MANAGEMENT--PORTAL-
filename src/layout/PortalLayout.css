@@ -1,0 +1,26 @@
+/* Whole page layout */
+.portal-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar already takes its own height */
+.portal-body {
+  flex: 1;
+  display: flex;          /* 🔥 THIS IS THE KEY */
+  align-items: flex-start; /* keep content at top */
+}
+
+/* Sidebar */
+.portal-body > div:first-child {
+  width: 220px;
+  height: calc(100vh - 60px); /* adjust if navbar height differs */
+}
+
+/* Main content area */
+.portal-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}

@@ -1,0 +1,113 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 60px;
+  background:  blue;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    270deg,
+   #DB2777,
+    #1e5dbb,
+    #3b82f6,
+    #1e3a5f
+  );
+  background-size: 600% 600%;
+  animation: gradientMove 12s ease infinite;
+  color: white;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.footer-left {
+  max-width: 420px;
+  z-index: 2;
+}
+
+.footer-middle {
+  z-index: 2;
+  margin-right: 50%;
+}
+
+.footer-middle h4 {
+  margin-bottom: 12px;
+
+}
+
+.footer-middle ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-middle li {
+  margin-bottom: 8px;
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.footer-middle li:hover {
+  opacity: 1;
+}
+
+/* STAMP */
+.footer-right {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  /* bottom: 150px; */
+  font-size: 110px;
+  /* font-weight: 800; */
+  color: rgba(255, 255, 255, 0.377);
+  pointer-events: none;
+}
+.footer-right .stamp-text {
+  font-size: 110px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.459);
+  /* display: block; */
+  line-height: 0.9;
+}
+
+/* BELOW STAMP */
+.stamp-tagline {
+  font-size: 16px;
+  margin-top: 10px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.stamp-roles {
+  font-size: 13px;
+  /* margin-top: 50px; */
+  color: white;
+}
+.stamp-socials {
+  /* margin-top: 12px; */
+  display: flex;
+  justify-content:flex-start;
+  gap: 14px;
+}
+
+.stamp-socials i {
+  font-size: 16px;
+  color:white;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.stamp-socials i:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
