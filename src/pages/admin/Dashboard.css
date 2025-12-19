@@ -1,0 +1,158 @@
+/* ===== DASHBOARD WRAPPER ===== */
+.admin-dashboard {
+  padding: 30px 35px;
+  background: linear-gradient(135deg, #f4f7fb, #eef2ff);
+  font-family: "Segoe UI", system-ui, sans-serif;
+
+  /* 🔥 CRITICAL FIX */
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== TITLE ===== */
+.dashboard-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 30px;
+}
+
+/* ===== ANALYTICS GRID ===== */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-bottom: 40px;
+}
+
+/* ===== CARD ===== */
+.analytics-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.analytics-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+}
+
+/* ===== ICON ===== */
+.analytics-card .icon {
+  font-size: 3rem;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: white;
+}
+
+/* ===== TEXT ===== */
+.analytics-card h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.analytics-card p {
+  margin-top: 6px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ===== COLOR VARIANTS ===== */
+.analytics-card.blue .icon {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.analytics-card.green .icon {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.analytics-card.orange .icon {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+}
+
+.analytics-card.red .icon {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+}
+
+/* ===== DIVIDER ===== */
+.admin-dashboard hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #c7d2fe,
+    transparent
+  );
+  margin: 50px 0;
+}
+
+/* ===== FORMS ===== */
+.admin-dashboard input,
+.admin-dashboard select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #c7d2fe;
+  margin-bottom: 10px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.admin-dashboard input:focus,
+.admin-dashboard select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* ===== BUTTON ===== */
+.admin-dashboard button {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* ===== LIST ===== */
+.admin-dashboard ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+.admin-dashboard li {
+  background: white;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 15px rgba(15, 23, 42, 0.06);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .analytics-card p {
+    font-size: 1.8rem;
+  }
+}

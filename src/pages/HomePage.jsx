@@ -1,28 +1,91 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+
+  // Force Bootstrap carousel to auto-start
+  useEffect(() => {
+    const carouselEl = document.getElementById(
+      "carouselExampleSlidesOnly"
+    );
+
+    if (carouselEl && window.bootstrap) {
+      new window.bootstrap.Carousel(carouselEl, {
+        interval: 3000,
+        ride: "carousel",
+        pause: false,
+        wrap: true,
+      });
+    }
+  }, []);
+
   return (
     <div className="home-container">
+
+      {/* ================= CAROUSEL ================= */}
+      <div
+        id="carouselExampleSlidesOnly"
+        className="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div className="carousel-inner">
+
+          <div className="carousel-item active">
+            <img
+              src="/images/smart academic.jpg"
+              className="d-block w-100"
+              alt="Smart Academic Management"
+            />
+            <div className="carousel-caption custom-caption">
+              <h2>Smart Academic Management</h2>
+              <p>All academic operations unified in one digital platform</p>
+            </div>
+          </div>
+
+          <div className="carousel-item">
+            <img
+              src="/images/powera.jpg"
+              className="d-block w-100"
+              alt="Powerful Admin Controls"
+            />
+            <div className="carousel-caption custom-caption">
+              <h2>Powerful Admin Controls</h2>
+              <p>Manage courses, staff, and operations with ease</p>
+            </div>
+          </div>
+
+          <div className="carousel-item">
+            <img
+              src="/images/empowering.jpg"
+              className="d-block w-100"
+              alt="Empowering Students and Faculty"
+            />
+            <div className="carousel-caption custom-caption">
+              <h2>Empowering Students & Faculty</h2>
+              <p>Seamless access to learning, attendance, and resources</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
       {/* ================= HERO SECTION ================= */}
       <div className="home-content">
 
-        {/* LEFT */}
         <div className="left-section">
           <h2>Welcome to Our Platform!</h2>
           <p className="subtitle">
-            This unified platform offers easy access to all administrative,
-            educational, and HR services. Empowering students, teachers,
-            and staff for a successful academic year.
+            This unified platform offers seamless access to all administrative,
+            educational, and HR services through a single, user-friendly
+            interface.It simplifies day-to-day academic operations by bringing
+            student management, attendance tracking,class logs,announcements,
+            and fee management under one system.
           </p>
         </div>
 
-        {/* RIGHT */}
         <div className="right-section">
           <h3>Join Us Today!</h3>
-
           <div className="auth-placeholder">
             <p>Ready to get started?</p>
             <Link to="/login">
@@ -34,17 +97,15 @@ const HomePage = () => {
 
       </div>
 
-      {/* ================= SERVICES ================= */}
+      {/* ================= TRUST / VALUE SECTION ================= */}
       <div className="services">
 
         <div className="service-section">
-          <h1>One Platform. Multiple Roles.</h1>
+          <h2>One Platform Multiple Roles!</h2>
           <p>
-            This academic portal brings administrators, teachers, and students
-            together in a single digital space. From managing courses and
-            attendance to sharing resources and announcements, everything
-            happens seamlessly.
-          </p>
+          This academic portal brings administrators,teachers,and students together within a single,secure digital ecosystem. It streamlines essential academic processes such as course management,attendance tracking,classlogs,and institutional communication.
+
+From sharing </p>
         </div>
 
         <div className="service-card">
@@ -54,6 +115,7 @@ const HomePage = () => {
             <li>Course & class management</li>
             <li>Attendance tracking & reports</li>
             <li>Announcements & academic updates</li>
+            <li>Secure data handling & transparency</li>
           </ul>
         </div>
 
@@ -64,14 +126,12 @@ const HomePage = () => {
 
         <div className="Portal-heading">
           <h2>
-            A centralized portal offering seamless access for students,
-            faculty, and staff
+           A unified platform for students, faculty, and staff
           </h2>
         </div>
 
         <div className="Portal-row">
 
-          {/* STUDENT CARD */}
           <div className="Our-Portal">
             <img
               src="/images/Gemini_Generated_Image_hxfzo4hxfzo4hxfz.png"
@@ -83,12 +143,11 @@ const HomePage = () => {
               <h3>Easy access to learning and academic services</h3>
               <p>
                 Students can access courses, attendance, assignments,
-                and academic tools instantly.
+                schedules, and academic tools instantly.
               </p>
             </div>
           </div>
 
-          {/* FACULTY CARD */}
           <div className="Our-Portal">
             <img
               src="/images/Gemini_Generated_Image_sx7geasx7geasx7g.png"
@@ -99,8 +158,8 @@ const HomePage = () => {
               <span className="tag">FACULTY</span>
               <h3>Seamless teaching and management tools</h3>
               <p>
-                Faculty members can manage classes, schedules,
-                and academic insights efficiently.
+                Faculty members can manage classes, attendance,
+                assessments, and academic insights efficiently.
               </p>
             </div>
           </div>

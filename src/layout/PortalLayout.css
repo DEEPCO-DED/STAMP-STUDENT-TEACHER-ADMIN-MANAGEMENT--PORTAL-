@@ -1,26 +1,117 @@
-/* Whole page layout */
+/* ===== ROOT LAYOUT ===== */
 .portal-layout {
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* Navbar already takes its own height */
+/* ===== NAVBAR ===== */
+.portal-layout > .portal-navbar {
+  height: 64px;
+  flex-shrink: 0;
+}
+
+/* ===== BODY (SIDEBAR + CONTENT) ===== */
 .portal-body {
+  display: flex;
   flex: 1;
-  display: flex;          /* 🔥 THIS IS THE KEY */
-  align-items: flex-start; /* keep content at top */
+  overflow: hidden;
 }
 
-/* Sidebar */
-.portal-body > div:first-child {
-  width: 220px;
-  height: calc(100vh - 60px); /* adjust if navbar height differs */
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  height: 100%;
 }
 
-/* Main content area */
+/* ===== MAIN CONTENT ===== */
 .portal-content {
   flex: 1;
-  padding: 20px;
+  padding: 24px;
+  background: #f8fafc;
   overflow-y: auto;
+}
+/* ===============================
+   MOBILE / TABLET (<= 768px)
+================================ */
+@media (max-width: 768px) {
+
+  /* Stack layout */
+  .portal-body {
+    flex-direction: column;
+  }
+
+  /* Sidebar hidden by default */
+  .sidebar {
+    position: absolute;
+    top: 64px; /* below navbar */
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 64px);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  /* Sidebar visible */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Content full width */
+  .portal-content {
+    width: 100%;
+    padding: 18px;
+  }
+}
+/* =========================
+   DESKTOP (default)
+========================= */
+.sidebar {
+  width: 240px;
+}
+
+/* =========================
+   TABLET (768px–1024px)
+========================= */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sidebar {
+    width: 70px;
+    transition: width 0.3s ease;
+  }
+
+  .sidebar.open {
+    width: 240px;
+  }
+
+  /* Hide text in collapsed mode */
+  .sidebar-inner span {
+    display: none;
+  }
+
+  .sidebar.open .sidebar-inner span {
+    display: inline;
+  }
+}
+
+/* =========================
+   MOBILE (<=768px)
+========================= */
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    top: 64px; /* navbar height */
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 64px);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
 }

@@ -1,29 +1,55 @@
 import { useEffect, useState } from "react";
+import "./Dashboard.css";
 
 export default function Dashboard() {
-  // COURSE STATE
+  /* ================= ANALYTICS (API) ================= */
+  const [classLogs, setClassLogs] = useState([]);
+  const [demoRequests, setDemoRequests] = useState([]);
+
+  /* ================= COURSE STATE (localStorage) ================= */
   const [courseName, setCourseName] = useState("");
   const [courses, setCourses] = useState([]);
 
-  // TEACHER STATE
+  /* ================= TEACHER STATE (localStorage) ================= */
   const [teacherName, setTeacherName] = useState("");
   const [teacherEmail, setTeacherEmail] = useState("");
   const [selectedCourseId, setSelectedCourseId] = useState("");
   const [teachers, setTeachers] = useState([]);
 
-  // LOAD DATA
+  /* ================= LOAD DATA ================= */
   useEffect(() => {
+    fetch("http://localhost:5000/classLogs")
+      .then(res => res.json())
+      .then(data => setClassLogs(data));
+
+    fetch("http://localhost:5000/demoRequests")
+      .then(res => res.json())
+      .then(data => setDemoRequests(data));
+
     setCourses(JSON.parse(localStorage.getItem("courses")) || []);
     setTeachers(JSON.parse(localStorage.getItem("teachers")) || []);
   }, []);
 
-  // ADD COURSE
+  /* ================= ANALYTICS LOGIC ================= */
+  const today = new Date().toISOString().split("T")[0];
+
+  const totalClasses = classLogs.length;
+  const todayClasses = classLogs.filter(
+    log => log.date === today
+  ).length;
+
+  const totalRequests = demoRequests.length;
+  const pendingRequests = demoRequests.filter(
+    r => r.status === "Pending"
+  ).length;
+
+  /* ================= ADD COURSE ================= */
   const addCourse = () => {
     if (!courseName.trim()) return;
 
     const newCourse = {
       courseId: Date.now(),
-      courseName: courseName.trim(),
+      courseName: courseName.trim()
     };
 
     const updatedCourses = [...courses, newCourse];
@@ -32,26 +58,24 @@ export default function Dashboard() {
     setCourseName("");
   };
 
-  // DELETE COURSE (ADMIN POWER)
+  /* ================= DELETE COURSE ================= */
   const deleteCourse = (courseId) => {
     if (!window.confirm("Delete this course permanently?")) return;
 
-    // remove course
     const updatedCourses = courses.filter(
-      (c) => c.courseId !== courseId
+      c => c.courseId !== courseId
     );
     setCourses(updatedCourses);
     localStorage.setItem("courses", JSON.stringify(updatedCourses));
 
-    // remove teachers under this course
     const updatedTeachers = teachers.filter(
-      (t) => t.courseId !== courseId
+      t => t.courseId !== courseId
     );
     setTeachers(updatedTeachers);
     localStorage.setItem("teachers", JSON.stringify(updatedTeachers));
   };
 
-  // ADD TEACHER
+  /* ================= ADD TEACHER ================= */
   const addTeacher = () => {
     if (!teacherName || !teacherEmail || !selectedCourseId) {
       alert("All fields required");
@@ -63,7 +87,7 @@ export default function Dashboard() {
       name: teacherName.trim(),
       email: teacherEmail.trim().toLowerCase(),
       courseId: selectedCourseId,
-      password: "dev@2025",
+      password: "dev@2025"
     };
 
     const updatedTeachers = [...teachers, newTeacher];
@@ -75,19 +99,67 @@ export default function Dashboard() {
     setSelectedCourseId("");
   };
 
-  // DELETE TEACHER
+  /* ================= DELETE TEACHER ================= */
   const deleteTeacher = (teacherId) => {
     if (!window.confirm("Delete this teacher permanently?")) return;
 
     const updatedTeachers = teachers.filter(
-      (t) => t.teacherId !== teacherId
+      t => t.teacherId !== teacherId
     );
     setTeachers(updatedTeachers);
     localStorage.setItem("teachers", JSON.stringify(updatedTeachers));
   };
 
   return (
-    <div>
+    <div className="admin-dashboard">
+      {/* ================= ANALYTICS TOP ================= */}
+      <h2 className="dashboard-title">Admin Dashboard Analytics</h2>
+
+      <div className="analytics-grid">
+        <div className="analytics-card blue">
+          <span className="icon">
+            <i className="fas fa-book-open"></i>
+          </span>
+          <div>
+            <h4>Total Classes</h4>
+            <p>{totalClasses}</p>
+          </div>
+        </div>
+
+        <div className="analytics-card green">
+          <span className="icon">
+            <i className="fas fa-calendar-day"></i>
+          </span>
+          <div>
+            <h4>Today's Classes</h4>
+            <p>{todayClasses}</p>
+          </div>
+        </div>
+
+        <div className="analytics-card orange">
+          <span className="icon">
+            <i className="fas fa-envelope-open-text"></i>
+          </span>
+          <div>
+            <h4>Demo Requests</h4>
+            <p>{totalRequests}</p>
+          </div>
+        </div>
+
+        <div className="analytics-card red">
+          <span className="icon">
+            <i className="fas fa-hourglass-half"></i>
+          </span>
+          <div>
+            <h4>Pending Requests</h4>
+            <p>{pendingRequests}</p>
+          </div>
+        </div>
+      </div>
+
+      <hr style={{ margin: "40px 0" }} />
+
+      {/* ================= EXISTING ADMIN FEATURES ================= */}
       <h2>Admin Dashboard</h2>
 
       {/* ADD COURSE */}
@@ -102,7 +174,7 @@ export default function Dashboard() {
         <button onClick={addCourse}>Add Course</button>
 
         <ul>
-          {courses.map((course) => (
+          {courses.map(course => (
             <li key={course.courseId}>
               {course.courseName}
               <button
@@ -119,6 +191,7 @@ export default function Dashboard() {
       {/* ADD TEACHER */}
       <div>
         <h3>Add Teacher</h3>
+
         <input
           type="text"
           placeholder="Teacher Name"
@@ -126,30 +199,33 @@ export default function Dashboard() {
           onChange={(e) => setTeacherName(e.target.value)}
         />
         <br />
+
         <input
           type="email"
           placeholder="Teacher Email"
           value={teacherEmail}
           onChange={(e) => setTeacherEmail(e.target.value)}
         />
-         <br />
+        <br />
+
         <select
           value={selectedCourseId}
           onChange={(e) => setSelectedCourseId(e.target.value)}
         >
           <option value="">Select Course</option>
-          {courses.map((course) => (
+          {courses.map(course => (
             <option key={course.courseId} value={course.courseId}>
               {course.courseName}
             </option>
           ))}
         </select>
+
         <button onClick={addTeacher}>Add Teacher</button>
 
         <ul>
-          {teachers.map((teacher) => {
+          {teachers.map(teacher => {
             const course = courses.find(
-              (c) => c.courseId == teacher.courseId
+              c => c.courseId == teacher.courseId
             );
 
             return (

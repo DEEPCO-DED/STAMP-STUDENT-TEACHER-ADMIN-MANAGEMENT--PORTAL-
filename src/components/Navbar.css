@@ -18,6 +18,7 @@
   background-size: 600% 600%;
   animation: gradientMove 12s ease infinite;
   color: white;
+  height: 100px;
 }
 
 @keyframes gradientMove {
@@ -101,4 +102,91 @@
 
 .demo-btn:hover {
   background-color: #174a94;
+}
+
+/* HAMBURGER */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background-color: #1e40af;
+  border-radius: 3px;
+  transition: all 0.35s ease;
+    z-index: 999;
+}
+
+/* Active animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+     z-index: 999;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+
+  .nav-right {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    padding: 20px 26px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.35s ease;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  .mobile-menu a:hover {
+    color: #0ea5e9;
+  }
 }

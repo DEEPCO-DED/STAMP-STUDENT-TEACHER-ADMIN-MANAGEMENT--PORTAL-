@@ -1,16 +1,18 @@
 .portal-navbar {
-  width: 100vw;
-  max-width: 100%;
-  box-sizing: border-box;
+  height: 64px;
+  background: linear-gradient(90deg, #1d4ed8, #2563eb);
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 16px 40px;
-  background-color: #ffffff;
+  padding: 0 20px;
+  color: white;
+  
+ width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);background: linear-gradient(
     270deg,
-   BLUE,
+
     #1e5dbb,
    #DB2777,
     #1e3a5f
@@ -31,22 +33,73 @@
     background-position: 0% 50%;
   }
 }
+.portal-navbar a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease;  }
 
-
-.portal-logo {
-  font-size: 22px;
-  font-weight: bold;
+/* LEFT SECTION */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.logout-btn {
-  background: #ef4444;
+/* HAMBURGER */
+
+/* BRAND */
+.portal-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.portal-logo {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.portal-subtitle {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* LOGOUT */
+.portal-logout {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-.logout-btn:hover {
-  background: #dc2626;
+/* SHOW HAMBURGER ON MOBILE */
+@media (max-width: 768px) {
+ 
 }
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* SHOW ON TABLET + MOBILE */
+@media (max-width: 1024px) {
+  .hamburger {
+    display: block;
+  }
+  .portal-subtitle{
+    display: none;
+  }
+}
+
+/* HAMBURGER DEFAULT */

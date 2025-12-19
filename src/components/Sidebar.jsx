@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import "./Sidebar.css";
 
 export default function Sidebar({ role }) {
+  const location = useLocation();
 
   const menus = {
     student: [
@@ -26,21 +28,22 @@ export default function Sidebar({ role }) {
   };
 
   return (
-    <div
-      style={{
-        width: "220px",
-        background: "#f4f4f4",
-        height: "100vh",
-        borderRight: "1px solid #ddd",
-        paddingTop: "20px",
-      }}
-    >
+    /* ❌ DO NOT use .sidebar here */
+    <div className="sidebar-inner">
+      <div className="sidebar-title">
+        {/* optional title / logo */}
+      </div>
+
       {menus[role].map((item, index) => (
-        <div
-          key={index}
-          style={{ margin: "12px 0", paddingLeft: "20px" }}
-        >
-          <Link to={item.path}>{item.name}</Link>
+        <div key={index} className="sidebar-item">
+          <Link
+            to={item.path}
+            className={`sidebar-link ${
+              location.pathname === item.path ? "active" : ""
+            }`}
+          >
+            {item.name}
+          </Link>
         </div>
       ))}
     </div>

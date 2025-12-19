@@ -1,45 +1,50 @@
-/* =================================
-   ANIMATION
-   ================================= */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
-/* =================================
-   PAGE WRAPPER
-   ================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .home-container {
   padding: 40px 60px;
   background: #ffffff;
   min-height: 100vh;
 }
 
-/* =================================
-   HERO SECTION
-   ================================= */
+.home-container   {
+  margin-bottom: 100px;
+}
+
+
 .home-content {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 50px;
   margin-top: 30px;
-  animation: fadeUp 0.8s ease forwards;
+  min-height: calc(100vh - 140px);
+  align-items: center;
+  animation: fadeUp 0.9s ease forwards;
 }
 
 /* LEFT */
@@ -47,12 +52,14 @@ html, body {
   color: #1e40af;
   font-size: 2.7rem;
   margin-bottom: 14px;
+  letter-spacing: -0.5px;
 }
 
 .subtitle {
   color: #355a66;
   font-size: 1.15rem;
   line-height: 1.7;
+  max-width: 620px;
 }
 
 /* RIGHT CARD */
@@ -60,9 +67,12 @@ html, body {
   background: #ffffff;
   padding: 35px;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
   text-align: center;
   animation: fadeUp 1s ease forwards;
+  will-change: transform;
+  width: 480px;
+  height: 400px;
 }
 
 .right-section h3 {
@@ -77,9 +87,9 @@ html, body {
   color: #2b3a42;
 }
 
-/* BUTTONS */
+/* button */
 .auth-placeholder button {
-  width: 100%;
+  width: 60%;
   padding: 12px;
   margin: 10px 0;
   border: none;
@@ -91,8 +101,8 @@ html, body {
 }
 
 .auth-placeholder button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 .login-button {
@@ -105,19 +115,16 @@ html, body {
   color: white;
 }
 
-/* =================================
-   SERVICES SECTION
-   ================================= */
+
 .services {
-  margin-top: 80px;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 40px;
   animation: fadeUp 1.1s ease forwards;
 }
 
-.service-section h1 {
-  color: #1e40af;
+.service-section h2 {
+  color: #1e40af ;
   font-size: 2.4rem;
   margin-bottom: 18px;
 }
@@ -126,13 +133,18 @@ html, body {
   color: #355a66;
   font-size: 1.1rem;
   line-height: 1.7;
+  text-align: justify;
+  width: 80%;
+
+  
 }
 
 .service-card {
   background: #ffffff;
   padding: 35px 30px;
   border-radius: 16px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+  will-change: transform;
 }
 
 .service-card h1 {
@@ -144,6 +156,7 @@ html, body {
 .service-card ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .service-card ul li {
@@ -152,11 +165,8 @@ html, body {
   color: #083344;
 }
 
-/* =================================
-   PORTAL SECTION
-   ================================= */
 .Portal-section {
-  margin-top: 90px;
+  animation: fadeUp 1.2s ease forwards;
 }
 
 .Portal-heading {
@@ -169,14 +179,14 @@ html, body {
   color: #065372;
 }
 
+
 .Portal-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 40px;
-  justify-content: center;
 }
 
-/* CARD */
+
 .Our-Portal {
   position: relative;
   width: 100%;
@@ -184,20 +194,28 @@ html, body {
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(14,165,233,0.4);
+  box-shadow: 0 0 14px rgba(14, 165, 233, 0.4);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
 }
 
 .Our-Portal:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(14,165,233,0.45);
+  transform: translateY(-12px);
+  box-shadow: 0 22px 44px rgba(14, 165, 233, 0.45);
 }
+
 
 .feature-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
+
+.Our-Portal:hover .feature-image {
+  transform: scale(1.06);
+}
+
 
 .Our-Portal-Text {
   position: absolute;
@@ -206,7 +224,7 @@ html, body {
   padding: 30px;
   border-radius: 20px 20px 0 0;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(45px);
   transition: all 0.4s ease;
 }
 
@@ -221,11 +239,8 @@ html, body {
   color: #0ea5e9;
 }
 
-/* =================================
-   FEATURES GRID
-   ================================= */
+
 .features-section {
-  margin-top: 90px;
   padding: 60px 40px;
 }
 
@@ -233,22 +248,25 @@ html, body {
   text-align: center;
   font-size: 2.1rem;
   margin-bottom: 45px;
-  color: #1e293b;
+  color:#1e40af;
 }
 
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+  gap: 28px;
 }
 
+/* FEATURE BOX */
 .feature-box,
 .feature-box-A {
   background: #ffffff;
-  padding: 25px;
+  padding: 28px;
   border-radius: 14px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  will-change: transform;
 }
 
 .feature-box {
@@ -261,26 +279,26 @@ html, body {
 
 .feature-box:hover,
 .feature-box-A:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(14,165,233,0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(14, 165, 233, 0.3);
 }
 
-/* ICONS */
+
 .feature-box i,
 .feature-box-A i {
   display: block;
-  margin: 0 auto 12px;
+  margin: 0 auto 18px;
   font-size: 28px;
   color: gold;
 }
 
-/* =================================
-   RESPONSIVE
-   ================================= */
-@media (max-width: 900px) {
 
+@media (max-width: 900px) {
   .home-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
+    min-height: auto;
+    text-align: center;
+    
   }
 
   .services {
@@ -291,10 +309,12 @@ html, body {
     grid-template-columns: 1fr;
   }
 
+  .home-container > * {
+    margin-bottom: 70px;
+  }
 }
 
 @media (max-width: 600px) {
-
   .home-container {
     padding: 25px 20px;
   }
@@ -303,16 +323,138 @@ html, body {
     font-size: 2rem;
     text-align: center;
   }
+  .service-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    width: 300PX;
+    margin-left: 9%;
+    color: #1e40af;
+  }
+   .service-section p{
+  
+    text-align: center;
+  width: 300PX;
+    margin-left: 20PX;
+   }
 
   .subtitle {
     text-align: center;
   }
 
+  .right-section {
+    padding: 28px 22px;
+  }
+
   .Portal-heading h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .features-section {
     padding: 40px 20px;
+  }
+}
+
+
+.carousel {
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 80px;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Carousel images */
+.carousel-item img {
+  height: 75vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Caption container */
+.carousel-caption {
+  bottom: 5%;
+  background: rgba(255, 255, 255, 0.733);
+  padding: 26px 34px;
+  border-radius: 16px;
+  max-width: 680px;
+  margin: auto;
+  animation: fadeUp 3s ease forwards;
+}
+
+/* Caption text */
+.carousel-caption h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 10px;
+}
+
+.carousel-caption p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #355a66;
+}
+
+/* Controls (arrows) */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: brightness(0.95);
+}
+
+/* Indicators */
+.carousel-indicators button {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+/* =================================
+   RESPONSIVE
+   ================================= */
+
+@media (max-width: 768px) {
+
+  /* ===== CAROUSEL FIX ===== */
+  .carousel {
+    margin-bottom: 50px;
+    border-radius: 14px;
+  }
+
+  .carousel-item img {
+    height: 50vh;
+    width: 100%;          /* ✅ FIXED */
+    object-fit: cover;
+  }
+
+  .carousel-caption {
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 12px 16px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1.4rem;
+  }
+
+  .carousel-caption p {
+    font-size: 0.95rem;
+  }
+
+  /* ===== HERO LAYOUT FIX ===== */
+  .home-content {
+    grid-template-columns: 1fr;   /* ✅ FIXED */
+    gap: 35px;
+    text-align: center;
+  }
+
+  .right-section {
+    width: 100%;
+    height: auto;
+  }
+
+  .subtitle {
+    max-width: 100%;
   }
 }

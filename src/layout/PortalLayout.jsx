@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import PortalNavbar from "./PortalNavbar";
 import Sidebar from "../components/Sidebar";
@@ -7,19 +8,30 @@ const PortalLayout = ({ role }) => {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   const location = useLocation();
 
+  // 🔹 THIS CONTROLS TABLET + MOBILE
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   if (!user || user.role !== role) {
     return <Navigate to="/login" replace />;
   }
 
   return (
     <div className="portal-layout">
-      <PortalNavbar />
+      {/* 🔹 PASS TO NAVBAR */}
+      <PortalNavbar onToggle={() => setSidebarOpen(!sidebarOpen)} />
 
       <div className="portal-body">
-        <Sidebar role={role} />
+        {/* 🔹 WRAPPER CONTROLS POSITION */}
+        <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+          <Sidebar role={role} />
+        </div>
 
-        {/* 🔥 KEY FIX */}
-        <main className="portal-content">
+        <main
+          className="portal-content"
+          onClick={() => {
+            if (window.innerWidth <= 768) setSidebarOpen(false);
+          }}
+        >
           <Outlet key={location.pathname} />
         </main>
       </div>
